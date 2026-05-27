@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes spin {
+            0% {
+                rotate: 0deg;
+            }
+
+            25% {
+                rotate: 90deg;
+            }
+
+            50% {
+                rotate: 180deg;
+            }
+
+            75% {
+                rotate: 270deg;
+            }
+
+            100% {
+                rotate: 360deg;
+            }
+        }
+
+        .wack {
+            animation: rotate360 .75s linear infinite;
+            /* animation set */
+            animation-play-state: paused;
+            /* ...but paused */
+        }
+
+        .wack:hover {
+            animation-play-state: running;
+        }
+
+        @keyframes rotate360 {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <style>
+        body {
+            background-color: #2F0147;
+        }
+
+        .trev {
+            size: 75%, 75%;
+        }
+
+        .rightPicture {
+            position: fixed;
+            /* position: flex; */
+            float: right;
+            float: top;
+            transform: scale(.5);
+            /* size: 75%, 75%; */
+            /* overflow: hidden; */
+        }
+
+        .circle {
+            margin: 3%;
+            /* overflow: hidden; */
+            position: relative;
+            background-color: #610F7F;
+            border-radius: 50%;
+            padding: 5%;
+            /* display: inline-block; */
+        }
+
+        p {
+            color: white;
+            font-size: x-large;
+            font-weight: bold;
+            padding: 1%;
+        }
+
+        .wackAssBox {
+            rotate: 15deg;
+            background-color: darkslategray;
+            height: 110%;
+            width: 30%;
+            size: 100%, 100%;
+        }
+
+        @keyframes slide-in {
+            from {
+                translate: -150vw 0;
+            }
+
+            to {
+                translate: 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="body">
+    <div>
+        <!-- <div class="wackAssBox">
+      why so small?
+    </div> -->
+        <p>
+            Hello! I am Trevor, this is my github.
+        </p>
+        <br>
+        <p>
+            ...
+        </p>
+        <br>
+        <p>
+            Work in progress lol
+        </p>
+    </div>
+    <div class="rightPicture circle">
+        <img class="wack trev" href="Jeopardy Player.html"
+            src="https://lh3.googleusercontent.com/a/ACg8ocL5UzuLDMOpVSA98_lPDoJpt5jyYPQbAEnuNOEue-I9qLwRAZQO=s360-c-no">
+    </div>
+</body>
+
+</html>
