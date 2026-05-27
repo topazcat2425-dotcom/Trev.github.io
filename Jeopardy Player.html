@@ -302,31 +302,6 @@
         default:
           break;
       }
-
-      // if (splitted[0] == namedTeam) {
-      //   document.getElementById("iiii").textContent = namedTeam;
-      //   hide("otherThing")
-      //   poopIn("i");
-      //   teamID = parseInt(splitted[1]);
-      //   console.log(teamID);
-      //   return
-      // } else if (splitted[0] == "s") {
-      //   // sendMessage("startTime:" + getNowTime());
-      //   // buttonDeAnimate();
-      // } else if (splitted[0] == "a") {
-      //   question = true;
-      //   buttonAnimate();
-      // } else if (splitted[0] == teamID) {
-      //   if (splitted[1] == "y") {
-      //     addScore(splitted[2]);
-      //   } else if (splitted[1] == "x") {
-      //     console.log("WRONG!! ignore the next guy");
-      //     // remove score lmao
-      //     addScore(splitted[2] * -1);
-      //   }
-      // } else if (splitted[0] == "g") {
-      //   question = false;
-      // }
     }
 
     function sendTeamName() {
@@ -517,9 +492,9 @@
       switch (pressed) {
         case 'enter':
           if (!gameStart) {
-            // sendTeamName();
+            sendTeamName();
           }
-          poopIn("i");
+          // poopIn("i");
           break;
         case ' ':
           // decideTeam(1);
@@ -534,7 +509,7 @@
         // timerBarGoDown("j");
         //   break;
         case 'r':
-          timerStart();
+          // timerStart();
           break;
         // case 'm':
         //   changeTimer(5);
