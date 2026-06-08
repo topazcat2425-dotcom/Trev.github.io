@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>JavaScript testing</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    } */
+
+    input[type=number] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+      /* Firefox */
+    }
+
+    .deactivate {
+      animation: fade .5s forwards;
+    }
+
+    .activate {
+      animation: fade .5s forwards;
+      animation-direction: reverse;
+    }
+
+    @keyframes fade {
+      0% {
+        scale: 100%;
+        opacity: 1;
+      }
+
+      100% {
+        scale: 95%;
+        opacity: 0.65;
+      }
+    }
+
+    .pop-in {
+      animation: zoom-in-a-lil .5s ease;
+    }
+
+    @keyframes zoom-in-a-lil {
+      0% {
+        scale: 0%;
+      }
+
+      65% {
+        scale: 110%;
+      }
+
+      100% {
+        scale: 100%
+      }
+    }
+
+    .timer {
+      animation: make-thinner 15s forwards;
+    }
+
+    @keyframes make-thinner {
+      0% {
+        transform: scaleX(1);
+      }
+
+      19% {
+        transform: scaleX(1);
+      }
+
+      20% {
+        transform: scaleX(.7);
+      }
+
+      39% {
+        transform: scaleX(.7);
+      }
+
+      40% {
+        transform: scaleX(.5);
+      }
+
+      59% {
+        transform: scaleX(.5);
+      }
+
+      60% {
+        transform: scaleX(.3);
+      }
+
+      79% {
+        transform: scaleX(.3);
+      }
+
+      80% {
+        transform: scaleX(.1);
+      }
+
+
+      99% {
+        transform: scaleX(.1);
+      }
+
+      100% {
+        transform: scaleX(0);
+      }
+
+      /* 100% {
+        scale: 100%
+      } */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex h-screen w-screen items-center justify-center bg-black">
+    <div class="flex w-full justify-center bg-black p-8" id="otherThing">
+      <div class="w-full rounded-xl border-4 border-gray-600 bg-gray-950 p-1 outline outline-white/5">
+        <div class="px-8 py-6">
+          <div class="w-full text-center text-xl font-bold text-white">Please input a team name:</div>
+          <br />
+          <input type="text" name="Team name" id="teamName" maxlength="8"
+            class="w-full border-separate rounded-sm border-4 border-cyan-400 bg-black px-4 py-2 text-center text-white" />
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="pop-in fixed inset-0 flex hidden h-full w-full items-center justify-center bg-linear-to-tr from-red-300 from-1% via-blue-900 via-25% to-black p-8 px-8 py-4 text-center font-bold text-white"
+      id="i">
+      <div class="align-middle">
+        <!-- bg-yellow-600 -->
+        <div id="ii" class="pop-in hidden h-1/3 w-full p-4">
+          <button onclick="noSpam()" id="button"
+            class="timeOutCorner deactivate h-full w-full rounded-lg bg-amber-500 p-4 text-center text-6xl text-white duration-300 hover:scale-105">ANSWER
+            BUTTON</button>
+        </div>
+        <div class="pop-in hidden h-1/6 w-full rounded-xl bg-gray-900 p-4" id="iii">
+          <div class="timer hidden h-full w-full bg-red-600 p-4" id="timer">
+            <!-- the THIGN! -->
+          </div>
+        </div>
+        <!-- <div class="w-full h-1/6 p-4 bg-gray-900 pop-in hidden rounded-xl" id=iii>
+          <div class="bg-red-600 h-full w-full timer hidden p-4" id="timer">
+          </div>
+        </div> -->
+        <div class="pop-in hidden text-center text-7xl" id="iiii">TEAMNAME</div>
+        <div id="iiiii" class="hidden pop-in">
+          <div class=" text-7xl text-amber-500" id="score">0</div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 flex hidden h-full w-full items-center justify-center p-8 text-center font-bold text-white"
+      id="popUp">
+      <div class="h-9/10 w-9/10 content-center rounded-lg border-4 border-red-600 bg-black text-center text-9xl"
+        id="popUpText">Another team is answering</div>
+    </div>
+    <div
+      class="hidden fixed inset-0 flex h-full w-full items-center justify-center p-8 text-center font-bold text-white"
+      id="dd">
+      <div class="h-9/10 w-9/10 content-center rounded-lg border-8 border-cyan-300 bg-blue-950 text-center text-5xl"
+        id="">
+        <div class="py-8 text-white">Please enter your wager, or say it out loud</div>
+        <div class="p-4">
+          <input type="number" min="0" id="ddInput" class="w-full rounded-xl bg-gray-900 border-4 border-amber-600 p-8"
+            onkeydown="checkEnter(this)" />
+        </div>
+      </div>
+    </div>
+
+    <!-- I have no idea how this works!! I just stole it from the tailwind css website!! -->
+    <div class="absolute bottom-0 left-0 hidden p-4" id="theConnector">
+      <div
+        class="inline-flex items-center rounded-md border-2 border-gray-400 bg-blue-900 px-4 py-2 text-sm leading-6 font-semibold text-white"
+        disabled="">
+        <svg class="mr-3 -ml-1 size-5 animate-spin text-white" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+          </path>
+        </svg>
+        <div id="ctxt">Connecting…</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js">
+    import mqtt from 'mqtt';
+
+  </script>
+  <script src="player.js">
+  </script>
+  <script>
+    // Check if the user is accessing the page on a mobile device
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // User is accessing the page on a mobile device
+      console.log("Mobile device detected");
+    } else {
+      // User is accessing the page on a desktop device
+      console.log("redirecting...");
+      window.location.href = "Jeopardy Player.html";
+    }
+  </script>
+  <script>
+    // just for the daily double number input
+    // worst code ever written right here, missed the forest for the trees
+    // stolen from stack overflow <3
+    document.getElementById("ddInput").addEventListener("keypress", function (evt) {
+      if (evt.which < 48 || evt.which > 57) {
+        evt.preventDefault();
+      } else if ((document.getElementById("ddInput").value) > parseInt(document.getElementById("score").innerHTML)
+        && evt.keyCode !== 46
+        && evt.keyCode !== 8
+      ) {
+        evt.preventDefault();
+        document.getElementById("ddInput").value = (parseInt(document.getElementById("score").innerHTML));
+      }
+    });
+  </script>
+</body>
+
+</html>

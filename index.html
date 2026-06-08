@@ -6,6 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        @import "tailwindcss";
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
         @keyframes spin {
             0% {
                 rotate: 0deg;
@@ -52,6 +56,10 @@
             animation: wuhhwoahh 1s linear infinite;
         }
 
+        .popInOnOpen {
+            animation: popIn .75s ease forwards;
+        }
+
         @keyframes rotate360 {
             to {
                 transform: rotate(360deg);
@@ -64,6 +72,20 @@
             }
 
             50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+            }
+
+            70% {
                 transform: scale(1.1);
             }
 
@@ -218,6 +240,9 @@
 
         .subtitle {
             color: white;
+            font-size: 170%;
+            /* TODO make this adapt to the size */
+            /* font-style: bold; */
         }
 
         .starburst {
@@ -233,7 +258,11 @@
             position: absolute;
             left: 55%;
             top: 25%;
-            rotate: -15deg;
+        }
+
+        .tilt {
+            --rotationDeg: -15deg;
+            rotate: var(--rotationDeg);
         }
 
         .whenTheTextIsTooMuch {
@@ -289,6 +318,17 @@
             margin-top: 4%;
         }
 
+        .slideUpAnimation li {
+            display: block;
+            animation: slidedown .5s ease forwards;
+            /* it won't let this be empty :( */
+        }
+
+        .slideUpAnimation li:HOVER {
+            /* background: rgba(0, 0, 0, 0); */
+            animation: slideup 1s ease forwards;
+        }
+
         @keyframes slide-in {
             from {
                 translate: -150vw 0;
@@ -297,6 +337,52 @@
             to {
                 translate: 0 0;
             }
+        }
+
+        @keyframes slideup {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            15% {
+                transform: translate(0, 10%);
+            }
+
+            100% {
+                transform: translate(0, -1000%);
+            }
+        }
+
+        @keyframes slidedown {
+            0% {
+                transform: translate(0, -1000%);
+            }
+
+            85% {
+                transform: translate(0, 10%);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .elem {
+            background: goldenrod;
+            width: 100px;
+            height: 100px;
+            animation: slidedown ease forwards;
+            animation-timeline: view();
         }
 
         /* svg {
@@ -315,93 +401,147 @@
 </head>
 
 <body class="body">
-    <div class="bodyOutline">
-        <!-- <div class="wackAssBox">
+    <div class="h-full w-full bg-slate-950 p-4">
+        <div class=" not-prose inset-0 border-4 rounded-xl border-indigo-400 p-3 bg-gray-900">
+            <!-- <div class="wackAssBox">
       why so small?
     </div> -->
-        <div class="setTop">
-            <div class="center">
-                <h3 class="myName textOutline">Trev</h3>
-                <h3 class="myName textOutline">or</h3>
-            </div>
-            <!-- <svg viewBox="0 0 450 450">
+            <div class="setTop">
+                <div class="center popInOnOpen">
+                    <h3 class="myName textOutline">Trev</h3>
+                    <div class="slideUpAnimation">
+                        <li>
+                            <h3 class="myName textOutline">or</h3>
+                        </li>
+                    </div>
+
+                </div>
+                <!-- <svg viewBox="0 0 450 450">
                 <text>
                     WORD???
                 </text>
             </svg> -->
-            <div class="pulsing moveUp shrinkContainer">
-                <h1 class=" center subtitle starburst">
-                    this is my website!
-                </h1>
-            </div>
-        </div>
-
-        <div class="centerX">
-            <p class="strokeme pText">
-                Hello! I am Trevor, this is my github. Well, its more my website but this is where you can learn more
-                about me! Trevor! That's me!
-                I love Times New Roman font, I like anime, I like video games, and all the other white boy things.
-            </p>
-            <div class="rightPicture circle">
-                <img class="wack trev"
-                    src="https://lh3.googleusercontent.com/a/ACg8ocL5UzuLDMOpVSA98_lPDoJpt5jyYPQbAEnuNOEue-I9qLwRAZQO=s360-c-no">
-            </div>
-        </div>
-        <div class="center topBorder" style="--c: #472047;">
-            <p class="strokeme center setTop">
-                How do you know me?
-            </p>
-        </div>
-        <div class="flexBox center buttContainer">
-
-            <div class="buttonBasic bigHover">
-                <div class=" fitFull topBorder" style="--c: #180c83;">
-                    <div class="center">
-                        <img src=" what.png" class="aboutTheRightImageSize">
-                    </div>
-
-                    <p class="strokeme center setToper">friends/family</p>
+                <div class="pulsing moveUp tilt shrinkContainer">
+                    <h1 class=" center subtitle starburst">
+                        this is my website!
+                    </h1>
                 </div>
             </div>
 
-            <div class="buttonBasic bigHover">
-                <div class=" fitFull topBorder" style="--c: #0d839b;">
-                    <div class="center">
-                        <img src="employer.png" class="aboutTheRightImageSize">
-                    </div>
-
-                    <p class="strokeme center setToper">pontential employer</p>
+            <div class="centerX">
+                <p class="strokeme pText">
+                    Hello! I am Trevor, this is my github. Well, its more my website but this is where you can learn
+                    more
+                    about me! Trevor! That's me!
+                    I love Times New Roman font, I like anime, I like video games, and all the other white boy things.
+                    <br>I can code in C, C++, Java, Javascript, HTML, CSS, and python! I LIKE coding in Java and
+                    Javascript.
+                    Maybe a little bit of C++.
+                </p>
+                <div class="rightPicture circle">
+                    <img class="wack trev"
+                        src="https://lh3.googleusercontent.com/a/ACg8ocL5UzuLDMOpVSA98_lPDoJpt5jyYPQbAEnuNOEue-I9qLwRAZQO=s360-c-no">
                 </div>
             </div>
+            <div class="center topBorder" style="--c: #472047;">
+                <p class="strokeme center setTop">
+                    How do you know me?
+                </p>
+            </div>
+            <div class="flexBox center buttContainer">
 
-            <a href="fuckYou.html">
                 <div class="buttonBasic bigHover">
-                    <div class=" fitFull topBorder" style="--c: #580d0d;">
+                    <div class=" fitFull topBorder" style="--c: #180c83;">
                         <div class="center">
-                            <img src="webscraper.png" class="aboutTheRightImageSize">
+                            <img src=" what.png" class="aboutTheRightImageSize">
                         </div>
 
-                        <p class="strokeme center">I am a webscraper</p>
+                        <p class="strokeme center setToper">friends/family</p>
                     </div>
                 </div>
-            </a>
-        </div>
-        <br>
-        <p>
-            ...
-        </p>
-        <br>
-        <p>
-            Work in progress lol
-        </p>
-        <!-- <a class="hyperLinks" href="Jeopardy Player.html">
+
+                <a href="please.html">
+                    <div class="buttonBasic bigHover">
+                        <div class=" fitFull topBorder" style="--c: #0d839b;">
+                            <div class="center">
+                                <img src="employer.png" class="aboutTheRightImageSize">
+                            </div>
+
+                            <p class="strokeme center setToper">pontential employer</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="fuckYou.html">
+                    <div class="buttonBasic bigHover">
+                        <div class=" fitFull topBorder" style="--c: #580d0d;">
+                            <div class="center">
+                                <img src="webscraper.png" class="aboutTheRightImageSize">
+                            </div>
+
+                            <p class="strokeme center">I am a webscraper</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="elem">
+
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center text-center">
+                <div
+                    class="size-80 flex flex-col items-center duration-300 justify-center bg-gray-800 transition delay-150 hover:scale-105 hover:bg-fuchsia-950 text-white font-bold rounded-xl transition shadow-lg">
+
+                    <div class="size-3/4">
+                        <img src=" what.png" class="size-full">
+                    </div>
+                    <div class="justify-center w-full flex-col flex">
+                        <p class="strokeme">friends/family</p>
+                    </div>
+                </div>
+                <div
+                    class="size-80 flex flex-col items-center  border-t-8 border-green-600 justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-lg">
+                    <div class="size-3/4">
+                        <img src=" what.png" class="size-full">
+                    </div>
+                    <div class="justify-center w-full flex-col flex">
+                        <p class="strokeme">friends/family</p>
+                    </div>
+                </div>
+                <div
+                    class="size-80 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl transition shadow-lg">
+                    Btn 3
+                </div>
+            </div>
+            <br>
+            <p>
+                I just want to be clear, I can use CSS, this page is proof of that, I just prefer tailwind CSS, which I
+                use
+                for literally everything else.
+            </p>
+            <br>
+            <p>
+                Work in progress lol
+            </p>
+            <!-- <a class="hyperLinks" href="Jeopardy Player.html">
             Here is hyperlink to Jeopardy, which is all I need this for atm.
         </a>
         <br>
         <a class="hyperLinks" href="Jeopardy Player Mobile.html">
             This one is to Jeopardy, but like, mobile. it'll kick you out if you're not on a phone.
         </a> -->
+        </div>
     </div>
 </body>
+
+<script>
+    const items = document.querySelectorAll('.slideUpAnimation');
+    items.forEach(item => {
+        item.addEventListener('mouseover', function () {
+            this.classList.add('slideDownAni');
+        }, { once: true }); // only triggers once
+    });
+</script>
 
 </html>

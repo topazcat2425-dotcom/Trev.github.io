@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>HI FRIEND!!</title>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="bg-black h-full w-full">
+        <div class="w-full h-full bg-gray-900 border-4 border-violet-200 p-4 text-white">
+            <div class="h-1/2 w-full p-8">
+                <a href="JeopardyStuff/Jeopardy Player Mobile.html">
+                    <div
+                        class=" rounded-lg bg-amber-500 w-full h-full font-bold border-4 border-red-500 flex items-center justify-center text-center text-6xl text-white duration-300 ease-in-out hover:scale-105">
+                        CLICK ME!
+                    </div>
+                </a>
+            </div>
+            <div class="flex">
+                <div class="w-1/2 bg-gray-700 p-4 text-white">
+                    <div class="font-bold pb-2">
+                        MY HEAPSORT
+                    </div>
+                    So here's my heapsort! It's in python! You're my friend, so you probably don't know how this works.
+                    Allow me to explain!
+                </div>
+                <div class="bg-gray-300 border-2 border-gray-600 w-1/2">
+                    <pre class="prettyprint">
+                    <code class="language-python text-white">
+    def isHeapMin(self, index):
+        heapy = True
+        left = (index*2) + 1
+        right = left+1
+
+        # is the "heap" at this index capable of having a heap
+        if self.isInBound(left):
+            heapy = self.l[index] < self.l[left] and self.isHeapMin(left)
+
+            if (heapy and self.isInBound(right)):
+                heapy = self.l[index] < self.l[right] and self.isHeapMin(right)
+        return heapy
+                    </code>
+                </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
