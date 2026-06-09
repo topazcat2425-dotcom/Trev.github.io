@@ -41,6 +41,7 @@ function sendMessage(TBS) {
 }
 
 function parseMessage(message) {
+    readCookies();
     splitted = message.split(':');
     console.log(splitted.toString());
     console.log(teamID);
@@ -50,9 +51,11 @@ function parseMessage(message) {
     switch (splitted[0]) {
         case namedTeam:
             document.getElementById("iiii").textContent = namedTeam;
+            setCookie("teamName", namedTeam);
             hide("otherThing");
             poopIn("i");
             teamID = parseInt(splitted[1]);
+            setCookie("teamID", teamID);
             console.log(teamID);
             break;
 
@@ -85,9 +88,10 @@ function parseMessage(message) {
             buttonDeAnimate();
             if (splitted[1] == teamID) {
                 timerStart();
-            } else {
-                otherTeamAnswering();
             }
+            // else {
+            //     // otherTeamAnswering();
+            // }
             break;
         case 't':
             changeTimer(splitted[1]);
@@ -97,7 +101,9 @@ function parseMessage(message) {
                 showDailyDouble();
             }
             break;
-
+        case "flush":
+            clearCookies();
+            break;
         default:
             break;
     }
@@ -192,6 +198,7 @@ function addScore(value) {
     score.innerHTML = parseInt(score.innerHTML) + parseInt(value);
     negativeRed(score);
     sendMessage("r:" + teamID.toString() + ":" + score.innerHTML);
+    setCookie("score", score.innerHTML);
 }
 
 function negativeRed(div) {
@@ -278,6 +285,51 @@ function show(ID) {
     }
 }
 
+function setCookie(cname, cvalue) {
+    const d = new Date();
+    d.setTime(d.getTime() + (12 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function checkCookies(cookName) {
+    if (document.cookie.split(";").some((item) => item.includes(cookName + "="))) {
+        return (document.cookie
+            .split("; ")
+            .find((row) => row.startsWith(cookName + "="))
+            ?.split("=")[1]);
+    } else {
+        return ("The Trevinator");
+    }
+}
+
+function cookDaPaties() {
+    console.log("cookingDaPaties!")
+    console.log(checkCookies("teamName"));
+    console.log(checkCookies("teamID"));
+    console.log(checkCookies("score"));
+}
+
+function readCookies() {
+    teamName = checkCookies("teamName");
+    if (teamName != "The Trevinator") {
+        document.getElementById("iiii").textContent = teamName;
+        hide("otherThing");
+        poopIn("i");
+        teamID = checkCookies("teamID");
+    }
+}
+
+function clearCookies() {
+    console.log("clearing");
+    document.cookie.split(';').forEach(cookie => {
+        const eqPos = cookie.indexOf('=');
+        const name = eqPos > -1 ? cookie.substring(0, eqPos).trim() : cookie.trim();
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;';
+    });
+    console.log(document.cookie);
+}
+
 document.onkeydown = function (e) {
     e = e || window.event;
 
@@ -305,15 +357,15 @@ function bigassswitchstatement(pressed) {
             document.getElementById("button").click();
             // console.log("clicked >.<")
             break;
-        // case 'a':
-        //   parseMessage('a');
-        //   break;
+        // case 'c':
+        //     clearCookies();
+        //     break;
         // case 'x':
         // timerBarGoDown("j");
         //   break;
-        // case 'r':
-        //   timerStart();
-        //   break;
+        case 'r':
+            cookDaPaties();
+            break;
         // case 'm':
         //   changeTimer(5);
         //   break;

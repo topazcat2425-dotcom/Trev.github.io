@@ -212,10 +212,13 @@
     // just for the daily double number input
     // worst code ever written right here, missed the forest for the trees
     // stolen from stack overflow <3
-    document.getElementById("ddInput").addEventListener("keypress", function (evt) {
-      if (evt.which < 48 || evt.which > 57) {
+    document.getElementById("ddInput").addEventListener("keydown", function (evt) {
+      if ((evt.which < 48 || evt.which > 57) && evt.keyCode !== 46 && evt.keyCode !== 8) {
         evt.preventDefault();
-      } else if ((document.getElementById("ddInput").value) > parseInt(document.getElementById("score").innerHTML)
+      }
+    });
+    document.getElementById("ddInput").addEventListener("keyup", function (evt) {
+      if ((document.getElementById("ddInput").value) > parseInt(document.getElementById("score").innerHTML)
         && evt.keyCode !== 46
         && evt.keyCode !== 8
       ) {
