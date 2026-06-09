@@ -5,113 +5,7 @@
   <title>JavaScript testing</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    } */
-
-    input[type=number] {
-      -moz-appearance: textfield;
-      appearance: textfield;
-      /* Firefox */
-    }
-
-    .deactivate {
-      animation: fade .5s forwards;
-    }
-
-    .activate {
-      animation: fade .5s forwards;
-      animation-direction: reverse;
-    }
-
-    @keyframes fade {
-      0% {
-        scale: 100%;
-        opacity: 1;
-      }
-
-      100% {
-        scale: 95%;
-        opacity: 0.65;
-      }
-    }
-
-    .pop-in {
-      animation: zoom-in-a-lil .5s ease;
-    }
-
-    @keyframes zoom-in-a-lil {
-      0% {
-        scale: 0%;
-      }
-
-      65% {
-        scale: 110%;
-      }
-
-      100% {
-        scale: 100%
-      }
-    }
-
-    .timer {
-      animation: make-thinner 15s forwards;
-    }
-
-    @keyframes make-thinner {
-      0% {
-        transform: scaleX(1);
-      }
-
-      19% {
-        transform: scaleX(1);
-      }
-
-      20% {
-        transform: scaleX(.7);
-      }
-
-      39% {
-        transform: scaleX(.7);
-      }
-
-      40% {
-        transform: scaleX(.5);
-      }
-
-      59% {
-        transform: scaleX(.5);
-      }
-
-      60% {
-        transform: scaleX(.3);
-      }
-
-      79% {
-        transform: scaleX(.3);
-      }
-
-      80% {
-        transform: scaleX(.1);
-      }
-
-
-      99% {
-        transform: scaleX(.1);
-      }
-
-      100% {
-        transform: scaleX(0);
-      }
-
-      /* 100% {
-        scale: 100%
-      } */
-    }
-  </style>
+  <link rel="stylesheet" href="JeopardyAnimations.css">
 </head>
 
 <body class="bg-black items-center h-screen w-screen justify-center flex">
@@ -159,7 +53,7 @@
     id="popUp">
     <div class="h-9/10 w-9/10 rounded-lg border-4 border-red-600 bg-black text-center text-9xl content-center"
       id="popUpText">
-      WHAT THE FUCK
+      Another team is answering
     </div>
   </div>
   <div class="hidden h-full w-full p-8 fixed inset-0 flex items-center justify-center font-bold text-center text-white"
@@ -194,6 +88,8 @@
   </div>
 
 
+
+  <script src="fileRead.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://unpkg.com/mqtt/dist/mqtt.min.js">
     import mqtt from 'mqtt';

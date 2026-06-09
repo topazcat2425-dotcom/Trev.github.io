@@ -6,113 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    } */
-
-    input[type=number] {
-      -moz-appearance: textfield;
-      appearance: textfield;
-      /* Firefox */
-    }
-
-    .deactivate {
-      animation: fade .5s forwards;
-    }
-
-    .activate {
-      animation: fade .5s forwards;
-      animation-direction: reverse;
-    }
-
-    @keyframes fade {
-      0% {
-        scale: 100%;
-        opacity: 1;
-      }
-
-      100% {
-        scale: 95%;
-        opacity: 0.65;
-      }
-    }
-
-    .pop-in {
-      animation: zoom-in-a-lil .5s ease;
-    }
-
-    @keyframes zoom-in-a-lil {
-      0% {
-        scale: 0%;
-      }
-
-      65% {
-        scale: 110%;
-      }
-
-      100% {
-        scale: 100%
-      }
-    }
-
-    .timer {
-      animation: make-thinner 15s forwards;
-    }
-
-    @keyframes make-thinner {
-      0% {
-        transform: scaleX(1);
-      }
-
-      19% {
-        transform: scaleX(1);
-      }
-
-      20% {
-        transform: scaleX(.7);
-      }
-
-      39% {
-        transform: scaleX(.7);
-      }
-
-      40% {
-        transform: scaleX(.5);
-      }
-
-      59% {
-        transform: scaleX(.5);
-      }
-
-      60% {
-        transform: scaleX(.3);
-      }
-
-      79% {
-        transform: scaleX(.3);
-      }
-
-      80% {
-        transform: scaleX(.1);
-      }
-
-
-      99% {
-        transform: scaleX(.1);
-      }
-
-      100% {
-        transform: scaleX(0);
-      }
-
-      /* 100% {
-        scale: 100%
-      } */
-    }
-  </style>
+  <link rel="stylesheet" href="JeopardyAnimations.css">
 </head>
 
 <body>
@@ -212,13 +106,10 @@
     // just for the daily double number input
     // worst code ever written right here, missed the forest for the trees
     // stolen from stack overflow <3
-    document.getElementById("ddInput").addEventListener("keydown", function (evt) {
-      if ((evt.which < 48 || evt.which > 57) && evt.keyCode !== 46 && evt.keyCode !== 8) {
+    document.getElementById("ddInput").addEventListener("keypress", function (evt) {
+      if (evt.which < 48 || evt.which > 57) {
         evt.preventDefault();
-      }
-    });
-    document.getElementById("ddInput").addEventListener("keyup", function (evt) {
-      if ((document.getElementById("ddInput").value) > parseInt(document.getElementById("score").innerHTML)
+      } else if ((document.getElementById("ddInput").value) > parseInt(document.getElementById("score").innerHTML)
         && evt.keyCode !== 46
         && evt.keyCode !== 8
       ) {
