@@ -53,6 +53,7 @@ function parseMessage(message) {
             document.getElementById("iiii").textContent = namedTeam;
             setCookie("teamName", namedTeam);
             hide("otherThing");
+
             poopIn("i");
             teamID = parseInt(splitted[1]);
             setCookie("teamID", teamID);
@@ -317,7 +318,13 @@ function readCookies() {
         hide("otherThing");
         poopIn("i");
         teamID = checkCookies("teamID");
-        document.getElementById("score").innerHTML = checkCookies("score");
+        const score = document.getElementById("score");
+        if (score.innerHTML == "The Trevinator") {
+            score.innerHTML = 0;
+        } else {
+            score.innerHTML = checkCookies("score");
+        }
+        // document.getElementById("score").innerHTML = checkCookies("score");
     }
 }
 
