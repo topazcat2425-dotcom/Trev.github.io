@@ -37,11 +37,13 @@ client.on('message', function (topic, message) {
 })
 
 function sendMessage(TBS) {
-    client.publish('elevator', TBS)
+    client.publish('elevator', TBS);
 }
 
 function parseMessage(message) {
-    readCookies();
+    if (!gameStart) {
+        readCookies();
+    }
     splitted = message.split(':');
     console.log(splitted.toString());
     console.log(teamID);
@@ -53,10 +55,12 @@ function parseMessage(message) {
             document.getElementById("iiii").textContent = namedTeam;
             setCookie("teamName", namedTeam);
             hide("otherThing");
+            gameStart = true;
 
             poopIn("i");
             teamID = parseInt(splitted[1]);
             setCookie("teamID", teamID);
+            setCookie("score", 0);
             console.log(teamID);
             break;
 
@@ -64,9 +68,9 @@ function parseMessage(message) {
             hideDailyDouble();
             break;
 
-        case 's':
-            gameStart = true;
-            break;
+        // case 's':
+        //     gameStart = true;
+        //     break;
 
         case 'a':
             question = true;
@@ -196,10 +200,15 @@ function addScore(value) {
     console.log("CORRECT!");
     hide("timer");
     const score = document.getElementById("score");
-    score.innerHTML = parseInt(score.innerHTML) + parseInt(value);
+
+    let scoreNum = getScoreCookie();
+    scoreNum = parseInt(scoreNum) + parseInt(value)
+    setCookie("score", scoreNum);
+    score.innerHTML = scoreNum;
+
     negativeRed(score);
     sendMessage("r:" + teamID.toString() + ":" + score.innerHTML);
-    setCookie("score", parseInt(score.innerHTML) + parseInt(value));
+    // setCookie("score", parseInt(score.innerHTML) + parseInt(value));
 }
 
 function negativeRed(div) {
@@ -305,7 +314,7 @@ function checkCookies(cookName) {
 }
 
 function cookDaPaties() {
-    console.log("cookingDaPaties!")
+    console.log("cookingDaPaties!");
     console.log(checkCookies("teamName"));
     console.log(checkCookies("teamID"));
     console.log(checkCookies("score"));
@@ -314,18 +323,24 @@ function cookDaPaties() {
 function readCookies() {
     teamName = checkCookies("teamName");
     if (teamName != "The Trevinator") {
+        gameStart = true;
         document.getElementById("iiii").textContent = teamName;
         hide("otherThing");
         poopIn("i");
         teamID = checkCookies("teamID");
-        const scoreNum = checkCookies("score");
-        const score = document.getElementById("score");
-        if (scoreNum == "The Trevinator") {
-            score.innerHTML = 0;
-        } else {
-            score.innerHTML = checkCookies("score");
-        }
+        document.getElementById("score").innerHTML = getScoreCookie();
+        negativeRed(document.getElementById("score"));
         // document.getElementById("score").innerHTML = checkCookies("score");
+    }
+}
+
+function getScoreCookie() {
+    const scoreNum = checkCookies("score");
+    const score = document.getElementById("score");
+    if (scoreNum == "The Trevinator") {
+        return (0);
+    } else {
+        return (parseInt(scoreNum));
     }
 }
 
@@ -375,6 +390,7 @@ function bigassswitchstatement(pressed) {
         case 'r':
             cookDaPaties();
             break;
+
         // case 'm':
         //   changeTimer(5);
         //   break;
