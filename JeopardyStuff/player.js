@@ -318,8 +318,9 @@ function readCookies() {
         hide("otherThing");
         poopIn("i");
         teamID = checkCookies("teamID");
+        const scoreNum = checkCookies("score");
         const score = document.getElementById("score");
-        if (score.innerHTML == "The Trevinator") {
+        if (scoreNum == "The Trevinator") {
             score.innerHTML = 0;
         } else {
             score.innerHTML = checkCookies("score");
