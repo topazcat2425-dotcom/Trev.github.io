@@ -198,7 +198,7 @@ function addScore(value) {
     score.innerHTML = parseInt(score.innerHTML) + parseInt(value);
     negativeRed(score);
     sendMessage("r:" + teamID.toString() + ":" + score.innerHTML);
-    setCookie("score", score.innerHTML);
+    setCookie("score", parseInt(score.innerHTML) + parseInt(value));
 }
 
 function negativeRed(div) {
@@ -317,6 +317,7 @@ function readCookies() {
         hide("otherThing");
         poopIn("i");
         teamID = checkCookies("teamID");
+        document.getElementById("score").innerHTML = checkCookies("score");
     }
 }
 
