@@ -81,21 +81,21 @@ document.onkeydown = function (e) {
 function bigassswitchstatement(pressed) {
 
     console.log(pressed);
-    if (isNumber(pressed)) {
-        console.log(pressed);
-        showAns(pressed);
-    }
+    // if (isNumber(pressed)) {
+    //     console.log(pressed);
+    //     showAns(pressed);
+    // }
 
     switch (pressed) {
-        case 'a':
-            grayBackground();
-            break;
-        case 'r':
-            ungrayBackground();
-            break;
-        case 'd':
-            // enableButton();
-            break;
+        // case 'a':
+        //     grayBackground();
+        //     break;
+        // case 'r':
+        //     ungrayBackground();
+        //     break;
+        // case 'd':
+        //     enableButton();
+        // break;
         default:
             break;
     }
