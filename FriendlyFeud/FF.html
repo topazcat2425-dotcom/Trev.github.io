@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>JavaScript testing</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="dark:bg-blue-900 h-full lg:bg-blue-900 lg:dark:bg-blue-900 text-center">
+
+  <div class="fixed inset-0 z-50 flex items-center justify-center hidden" id="xcontain">
+    <img
+      src="https://static.wikia.nocookie.net/gameshows/images/2/22/Family_Feud_Strike_Indicator.png/revision/latest?cb=20160216060413"
+      class="lg:h-1/2 border-8 border-transparent hidden" id="x-1">
+    <img
+      src="https://static.wikia.nocookie.net/gameshows/images/2/22/Family_Feud_Strike_Indicator.png/revision/latest?cb=20160216060413"
+      class="lg:h-1/2 border-8 border-transparent hidden" id="x-2">
+    <img
+      src="https://static.wikia.nocookie.net/gameshows/images/2/22/Family_Feud_Strike_Indicator.png/revision/latest?cb=20160216060413"
+      class="lg:h-1/2 border-8 border-transparent hidden" id="x-3">
+  </div>
+
+  <!--this bit here is the score-->
+  <div class="flex shrink-0 flex-col items-center p-10">
+    <div class="fixed z-10 top-0">
+      <div
+        class="w-48 h-16 rounded-b-full bg-sky-900 p-4 font-bold text-white flex items-center justify-center outline-8 outline-offset-2 outline-yellow-500 outline-double dark:border-transparent">
+        <font size="48" id="score">1000</font>
+      </div>
+    </div>
+  </div>
+
+  <div class="fixed top-0 right-0 z-50">
+    <div
+      class="w-48 h-16 rounded-bl-full bg-sky-900 p-4 font-bold text-white flex items-center justify-center outline-8 outline-offset-2 outline-yellow-500 outline-double dark:border-transparent">
+      <font size="48" id="score-2">1000</font>
+    </div>
+  </div>
+
+  <div class="fixed top-0 left-0 z-50">
+    <div
+      class="w-48 h-16 rounded-br-full bg-sky-900 p-4 font-bold text-white flex items-center justify-center outline-8 outline-offset-2 outline-yellow-500 outline-double dark:border-transparent">
+      <font size="48" id="score-1">1000</font>
+    </div>
+  </div>
+
+  <div class="fixed top-24 right-0 z-50">
+    <div dir="ltr"
+      class="inline-flex h-24 rounded-s-full bg-sky-900 p-4 font-bold text-white items-center justify-center outline-8 outline-offset-2 outline-yellow-500 outline-double dark:border-transparent">
+      <font size="48" id="score">Team 2</font>
+    </div>
+  </div>
+
+  <div class="fixed top-24 left-0 z-50">
+    <div dir="rtl"
+      class="inline-flex h-24 rounded-s-full bg-sky-900 p-4 font-bold text-white items-center justify-center outline-8 outline-offset-2 outline-yellow-500 outline-double dark:border-transparent">
+      <font size="48" id="score">Team 1</font>
+    </div>
+  </div>
+  <!--this bit here is the question table-->
+  <div class="flex flex-col justify-center items-center gap-8">
+
+    <div class="min-w-[80rem] md:min-w-[85rem] lg:w-[90rem] gap-8">
+      <br>
+      <br>
+
+      <div class="min-w-[80rem] md:min-w-[85rem] lg:w-[90rem] gap-8">
+        <div class="not-prose isolate">
+          <figure
+            class="flex flex-col gap-1 rounded-xl bg-gray-950/5 p-1 inset-ring inset-ring-gray-950/5 dark:bg-white/10 dark:inset-ring-white/10">
+            <div class="not-prose overflow-auto rounded-lg bg-white outline outline-white/5 dark:bg-gray-950/50">
+              <div class="px-4 py-8 sm:px-8">
+                <table
+                  class="w-full border-separate rounded-sm border-4 border-cyan-400 bg-black dark:border-cyan-300 dark:bg-black">
+                  <thead class="bg-blue-900 dark:bg-blue-900">
+                    <tr>
+                      <th colspan="12"
+                        class="w-1/2 relative border border-gray-300 p-4 text-center text-shadow-lg/30 font-bold text-white border-gray-600 dark:text-gray-200">
+                        <font size="28">Question</font>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <!-- Single cell containing both side-by-side tables -->
+                      <td class="border-gray-300 p-0">
+                        <div class="flex">
+                          <div class="flex-1 relative">
+                            <table class="w-full table-fixed border-separate border-4 rounded-lg">
+                              <tbody>
+                                <tr>
+                                  <!-- Left column takes 5/6 of space -->
+                                  <td
+                                    class="w-10/12 border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700">
+                                    <div class="text-lg md:text-xl lg:text-2xl truncate">short short</div>
+                                  </td>
+                                  <!-- Right column takes 1/6 of space -->
+                                  <td class="w-2/12 p-4 text-center text-black rounded-r-sm bg-amber-200">
+                                    <font size="28"><b id="s1-1" class="unused">00</b></font>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!--THE COVER!!!-->
+                            <div id="1-1"
+                              class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                              <div
+                                class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                                1
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <!-- Single cell containing both side-by-side tables -->
+                      <td class="border-gray-300 p-0">
+                        <div class="flex">
+                          <div class="flex-1 relative">
+                            <table class="w-full table-fixed border-separate border-4 rounded-lg">
+                              <tbody>
+                                <tr>
+                                  <!-- Left column takes 5/6 of space -->
+                                  <td
+                                    class="w-10/12 border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700">
+                                    <div class="text-lg md:text-xl lg:text-2xl truncate">smimple</div>
+                                  </td>
+                                  <!-- Right column takes 1/6 of space -->
+                                  <td class="w-2/12 p-4 text-center text-black rounded-r-sm bg-amber-200">
+                                    <font size="28"><b id="s1-5" class="unused">00</b></font>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!--THE COVER!!!-->
+                            <div id="1-5"
+                              class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                              <div
+                                class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                                5
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <!-- Single cell containing both side-by-side tables -->
+                      <td class="border-gray-300 p-0">
+                        <div class="flex">
+                          <div class="flex-1 relative">
+                            <table class="w-full table-fixed border-separate border-4 rounded-lg">
+                              <tbody>
+                                <tr>
+                                  <!-- Left column takes 5/6 of space -->
+                                  <td
+                                    class="w-10/12 border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700">
+                                    <div class="text-lg md:text-xl lg:text-2xl truncate">make him change everything
+                                      about his<br> personality and apperance </div>
+                                  </td>
+                                  <!-- Right column takes 1/6 of space -->
+                                  <td class="w-2/12 p-4 text-center text-black rounded-r-sm bg-amber-200">
+                                    <font size="28"><b id="s1-2" class="unused">00</b></font>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!--THE COVER!!!-->
+                            <div id="1-2"
+                              class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                              <div
+                                class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                                2
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="border-gray-300 p-0">
+                        <div class="flex-1 relative">
+                          <table class="w-full table-fixed border-separate border-4 rounded-lg">
+                            <tbody>
+                              <tr>
+                                <!-- Left column takes 5/6 of space -->
+                                <td
+                                  class="w-10/12 border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700">
+                                  <div class="text-lg md:text-xl lg:text-2xl truncate">smoething else competitively long
+                                    or smth</div>
+                                </td>
+                                <!-- Right column takes 1/6 of space -->
+                                <td class="w-2/12 p-4 text-center text-black rounded-r-sm bg-amber-200">
+                                  <font size="28"><b id="s1-6" class="unused">00</b></font>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          <!--THE COVER!!!-->
+                          <div id="1-6"
+                            class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                            <div
+                              class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                              6
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <!-- Single cell containing both side-by-side tables -->
+                      <td class="border-gray-300 p-0">
+                        <div class="flex">
+                          <div class="flex-1 relative">
+                            <table class="w-full table-fixed border-separate border-4 rounded-lg">
+                              <tbody>
+                                <tr>
+                                  <!-- Left column takes 5/6 of space -->
+                                  <td
+                                    class="w-10/12 border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700">
+                                    <div class="text-lg md:text-xl lg:text-2xl truncate">smoething else competitively
+                                      long
+                                      or smth</div>
+                                  </td>
+                                  <!-- Right column takes 1/6 of space -->
+                                  <td class="w-2/12 p-4 text-center text-black rounded-r-sm bg-amber-200">
+                                    <font size="28"><b id="s1-3" class="unused">00</b></font>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!--THE COVER!!!-->
+                            <div id="1-3"
+                              class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                              <div
+                                class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                                3
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="border-gray-300 p-0">
+                        <div class="flex-1 relative">
+                          <table class="w-full table-fixed border-separate border-4 rounded-lg">
+                            <tbody>
+                              <tr>
+                                <!-- Left column takes 5/6 of space -->
+                                <td
+                                  class="w-10/12 border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700">
+                                  <div class="text-lg md:text-xl lg:text-2xl truncate">smoething else competitively long
+                                    or smth</div>
+                                </td>
+                                <!-- Right column takes 1/6 of space -->
+                                <td class="w-2/12 p-4 text-center text-black rounded-r-sm bg-amber-200">
+                                  <font size="28"><b id="s1-7" class="unused">00</b></font>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          <!--THE COVER!!!-->
+                          <div id="1-7"
+                            class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                            <div
+                              class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                              7
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr>
+                      <!-- Single cell containing both side-by-side tables -->
+                      <td class="border-gray-300 p-0">
+                        <div class="flex">
+                          <div class="flex-1 relative">
+                            <table class="w-full table-fixed border-separate border-4 rounded-lg">
+                              <tbody>
+                                <tr>
+                                  <!-- Left column takes 5/6 of space -->
+                                  <td
+                                    class="w-10/12 border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700">
+                                    <div class="text-lg md:text-xl lg:text-2xl truncate">smoething else competitively
+                                      long
+                                      or smth</div>
+                                  </td>
+                                  <!-- Right column takes 1/6 of space -->
+                                  <td class="w-2/12 p-4 text-center text-black rounded-r-sm bg-amber-200">
+                                    <font size="28"><b id="s1-4" class="unused">00</b></font>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!--THE COVER!!!-->
+                            <div id="1-4"
+                              class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                              <div
+                                class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                                4
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="border-gray-300 p-0">
+                        <div class="flex-1 relative">
+                          <table class="w-full table-fixed border-separate border-4 rounded-lg">
+                            <tbody>
+                              <tr>
+                                <!-- Left column takes 5/6 of space -->
+                                <td
+                                  class="w-10/12 border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700">
+                                  <div class="text-lg md:text-xl lg:text-2xl truncate">smoething else competitively long
+                                    or smth</div>
+                                </td>
+                                <!-- Right column takes 1/6 of space -->
+                                <td class="w-2/12 p-4 text-center text-black rounded-r-sm bg-amber-200">
+                                  <font size="28"><b id="s1-8" class="unused">00</b></font>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          <!--THE COVER!!!-->
+                          <div id="1-8"
+                            class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                            <div
+                              class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                              8
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </figure>
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="not-prose isolate">
+          <figure
+            class="flex flex-col gap-1 rounded-xl bg-gray-950/5 p-1 inset-ring inset-ring-gray-950/5 dark:bg-white/10 dark:inset-ring-white/10">
+            <div class="not-prose overflow-auto rounded-lg bg-white outline outline-white/5 dark:bg-gray-950/50">
+              <div class="px-4 py-8 sm:px-8">
+                <table
+                  class="w-full border-separate rounded-sm border-4 border-cyan-400 bg-black dark:border-cyan-300 dark:bg-black">
+                  <thead class="bg-blue-900 dark:bg-blue-900">
+                    <tr>
+                      <th colspan="12"
+                        class="w-1/2 relative border border-gray-300 p-4 text-center text-shadow-lg/30 font-bold text-white border-gray-600 dark:text-gray-200">
+                        <font size="28">Question</font>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <!-- Single cell containing both side-by-side tables -->
+                      <td class="border-gray-300 p-0">
+                        <div class="flex">
+                          <div class="flex-1 relative">
+                            <table class="w-full border-separate border-4 rounded-lg">
+                              <tbody>
+                                <tr>
+                                  <td colspan="4"
+                                    class="border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700 dark:bg-sky-700 dark:border-gray-700">
+                                    <font size="28">ANSWER 1</font>
+                                  </td>
+                                  <td
+                                    class="w-1/12 p-4 text-center text-black rounded-r-sm bg-amber-200 dark:bg-amber-200 ">
+                                    <font size="28"><b id="s2-1" class="unused">00</b></font>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!--THE COVER!!!-->
+                            <div id="2-1"
+                              class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                              <div
+                                class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                                1
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <!-- Single cell containing both side-by-side tables -->
+                      <td class="border-gray-300 p-0">
+                        <div class="flex">
+                          <div class="flex-1 relative">
+                            <table class="w-full border-separate border-4 rounded-lg">
+                              <tbody>
+                                <tr>
+                                  <td colspan="4"
+                                    class="border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700 dark:bg-sky-700 dark:border-gray-700">
+                                    <font size="28">ANSWER 5</font>
+                                  </td>
+                                  <td
+                                    class="w-1/12 p-4 text-center text-black rounded-r-sm bg-amber-200 dark:bg-amber-200 ">
+                                    <font size="28"><b id="s2-5" class="unused">00</b></font>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!--THE COVER!!!-->
+                            <div id="2-5"
+                              class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                              <div
+                                class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                                5
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <!-- Single cell containing both side-by-side tables -->
+                      <td class="border-gray-300 p-0">
+                        <div class="flex">
+                          <div class="flex-1 relative">
+                            <table class="w-full border-separate border-4 rounded-lg">
+                              <tbody>
+                                <tr>
+                                  <td colspan="4"
+                                    class="border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700 dark:bg-sky-700 dark:border-gray-700">
+                                    <font size="28">ANSWER 2</font>
+                                  </td>
+                                  <td
+                                    class="w-1/12 p-4 text-center text-black rounded-r-sm bg-amber-200 dark:bg-amber-200 ">
+                                    <font size="28"><b id="s2-2" class="unused">00</b></font>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!--THE COVER!!!-->
+                            <div id="2-2"
+                              class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                              <div
+                                class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                                2
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="border-gray-300 p-0">
+                        <div class="flex-1 relative">
+                          <table class="w-full border-separate border-4 rounded-lg">
+                            <tbody>
+                              <tr>
+                                <td colspan="4"
+                                  class="border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700 dark:bg-sky-700 dark:border-gray-700">
+                                  <font size="28">ANSWER 6</font>
+                                </td>
+                                <td
+                                  class="w-1/12 p-4 text-center text-black rounded-r-sm bg-amber-200 dark:bg-amber-200 ">
+                                  <font size="28"><b id="s2-6" class="unused">00</b></font>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          <!--THE COVER!!!-->
+                          <div id="2-6"
+                            class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                            <div
+                              class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                              6
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <!-- Single cell containing both side-by-side tables -->
+                      <td class="border-gray-300 p-0">
+                        <div class="flex">
+                          <div class="flex-1 relative">
+                            <table class="w-full border-separate border-4 rounded-lg">
+                              <tbody>
+                                <tr>
+                                  <td colspan="4"
+                                    class="border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700 dark:bg-sky-700 dark:border-gray-700">
+                                    <font size="28">ANSWER 3</font>
+                                  </td>
+                                  <td
+                                    class="w-1/12 p-4 text-center text-black rounded-r-sm bg-amber-200 dark:bg-amber-200 ">
+                                    <font size="28"><b id="s2-3" class="unused">30</b></font>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!--THE COVER!!!-->
+                            <div id="2-3"
+                              class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                              <div
+                                class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                                3
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="border-gray-300 p-0">
+                        <div class="flex-1 relative">
+                          <table class="w-full border-separate border-4 rounded-lg">
+                            <tbody>
+                              <tr>
+                                <td colspan="4"
+                                  class="border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700 dark:bg-sky-700 dark:border-gray-700">
+                                  <font size="28">ANSWER 7</font>
+                                </td>
+                                <td
+                                  class="w-1/12 p-4 text-center text-black rounded-r-sm bg-amber-200 dark:bg-amber-200 ">
+                                  <font size="28"><b id="s2-7" class="unused">00</b></font>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          <!--THE COVER!!!-->
+                          <div id="2-7"
+                            class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                            <div
+                              class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                              7
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+
+                    <tr>
+                      <!-- Single cell containing both side-by-side tables -->
+                      <td class="border-gray-300 p-0">
+                        <div class="flex">
+                          <div class="flex-1 relative">
+                            <table class="w-full border-separate border-4 rounded-lg">
+                              <tbody>
+                                <tr>
+                                  <td colspan="4"
+                                    class="border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700 dark:bg-sky-700 dark:border-gray-700">
+                                    <font size="28">ANSWER 4</font>
+                                  </td>
+                                  <td
+                                    class="w-1/12 p-4 text-center text-black rounded-r-sm bg-amber-200 dark:bg-amber-200 ">
+                                    <font size="28"><b id="s2-4" class="unused">00</b></font>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                            <!--THE COVER!!!-->
+                            <div id="2-4"
+                              class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                              <div
+                                class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                                4
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </td>
+                      <td class="border-gray-300 p-0">
+                        <div class="flex-1 relative">
+                          <table class="w-full border-separate border-4 rounded-lg">
+                            <tbody>
+                              <tr>
+                                <td colspan="4"
+                                  class="border-r border-gray-300 p-4 text-center text-white rounded-l-sm bg-sky-700 dark:bg-sky-700 dark:border-gray-700">
+                                  <font size="28">ANSWER 8</font>
+                                </td>
+                                <td
+                                  class="w-1/12 p-4 text-center text-black rounded-r-sm bg-amber-200 dark:bg-amber-200 ">
+                                  <font size="28"><b id="s2-8" class="unused">00</b></font>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          <!--THE COVER!!!-->
+                          <div id="2-8"
+                            class="absolute top-0 left-0 w-full h-full bg-blue-500 rounded-lg flex items-center justify-center">
+                            <div
+                              class="w-1/6 h-[5rem] text-7xl rounded-full bg-blue-700 p-4 font-bold text-white flex flex-col justify-center items-center outline-4 outline-slate-600 outline">
+                              8
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </figure>
+
+        </div>
+
+
+        <script>
+          let current = 1;
+          let questScore = 0;
+          let team1 = 0;
+          let team2 = 0;
+          let exes = 0;
+          let muted = false;
+
+          document.onkeydown = function (e) {
+            e = e || window.event;
+
+            bigassswitchstatement(e.key.toLocaleLowerCase());
+          };
+
+          function bigassswitchstatement(pressed) {
+
+            console.log(pressed);
+            if (isNumber(pressed)) {
+              console.log(pressed);
+              showAns(pressed);
+            }
+
+            switch (pressed) {
+              case 'enter':
+                nextQuestion();
+                break;
+              case 'a':
+                decideTeam(1);
+                break;
+              case 'd':
+                decideTeam(2);
+                break;
+              case 'x':
+                wrong();
+                break;
+              case 'r':
+                reset();
+                break;
+              case 'm':
+                mute();
+                break;
+              default:
+                break;
+            }
+          }
+
+          function showAns(char) {
+            const id = current + "-" + char
+            const question = document.getElementById(id);
+            console.log(id);
+
+            const score = document.getElementById("s" + id);
+            const currentScore = document.getElementById("score");
+
+            if (score.classList.contains("unused")) {
+              question.classList.add("animate-ping");
+              if (!muted) {
+                const audio = new Audio("RIGHT.m4a");
+                audio.play();
+              }
+              currentScore.innerHTML = Math.round(currentScore.innerHTML) + Math.round(score.innerHTML);
+              score.classList.remove("unused");
+              setTimeout(() => {
+                question.classList.add("hidden");// Logs correctly
+              }, 800);
+            }
+
+          }
+
+          function timeIn() {
+            question.classList.add("hidden");
+          }
+
+          function nextQuestion() {
+            current++;
+          }
+
+          function wrong() {
+            exes++;
+            if (exes > 3) {
+              exes = 1;
+              for (let i = 1; i <= 3; i++) {
+                const x = document.getElementById("x-" + i);
+                x.classList.add("hidden");
+              }
+            }
+            const x = document.getElementById("x-" + exes);
+            if (!muted) {
+              const audio = new Audio("WRONG.m4a");
+              audio.play();
+            }
+            x.classList.remove("hidden");
+            const contain = document.getElementById("xcontain");
+            contain.classList.remove("hidden");
+            setTimeout(drStrange, 1000);
+
+          }
+
+          function drStrange() {
+            const contain = document.getElementById("xcontain");
+            contain.classList.add("hidden");
+          }
+
+
+          function reset() {
+            for (let i = 1; i <= exes; i++) {
+              const x = document.getElementById("x-" + i);
+              x.classList.add("hidden");
+            }
+            exes = 0;
+          }
+
+          function decideTeam(teamNum) {
+            const scoreboard = document.getElementById("score-" + teamNum);
+            const currentScore = document.getElementById("score");
+            scoreboard.innerHTML = Math.round(scoreboard.innerHTML, 10) + Math.round(currentScore.innerHTML);
+            currentScore.innerHTML = "0";
+          }
+          function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
+
+          function mute() {
+            muted = !muted;
+          }
+
+        </script>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

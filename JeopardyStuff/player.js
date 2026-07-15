@@ -313,8 +313,8 @@ function checkCookies(cookName) {
     }
 }
 
-function cookDaPaties() {
-    console.log("cookingDaPaties!");
+function printCookies() {
+    console.log("printing Cookies JACK!");
     console.log(checkCookies("teamName"));
     console.log(checkCookies("teamID"));
     console.log(checkCookies("score"));
@@ -388,7 +388,7 @@ function bigassswitchstatement(pressed) {
         // timerBarGoDown("j");
         //   break;
         case 'r':
-            cookDaPaties();
+            printCookies();
             break;
 
         // case 'm':

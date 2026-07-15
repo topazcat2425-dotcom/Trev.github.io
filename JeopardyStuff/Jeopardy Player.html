@@ -120,6 +120,7 @@
         evt.preventDefault();
       }
     });
+    // TODO BAN COLONS AND SEMICOLONS
     document.getElementById("ddInput").addEventListener("keyup", function (evt) {
       if ((document.getElementById("ddInput").value) > parseInt(document.getElementById("score").innerHTML)
         && evt.keyCode !== 46

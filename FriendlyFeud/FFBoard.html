@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Family Feud Control</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="FF.css">
+</head>
+
+<body class="dark:bg-blue-900 h-full lg:bg-gray-800 lg:dark:bg-gray-800 text-center place-content-center flex"
+  onload="pConn.initConnect()">
+
+  <div class=" h-screen w-screen bg-black items-center justify-center place-content-center" id="IDTaker">
+    <div class="flex justify-center w-full p-32" id="otherThing z-50">
+      <div class="w-full p-1 rounded-xl bg-gray-950 outline outline-white/5 border-4 border-gray-600 ">
+        <div class="px-8 py-6">
+          <div class="w-full text-center text-white font-bold text-xl">
+            Please input the ID given by the screen:
+          </div>
+          <br>
+          <input type="text" name="Team name" id="in" maxlength="9"
+            class="w-full border-separate rounded-sm border-4 border-cyan-400 bg-black text-white py-2 px-4 text-center">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fixed inset-0 z-50 flex items-center justify-center hidden" id="xcontain">
+    <img
+      src="https://static.wikia.nocookie.net/gameshows/images/2/22/Family_Feud_Strike_Indicator.png/revision/latest?cb=20160216060413"
+      class="lg:h-1/2 border-8 border-transparent hidden" id="x-1">
+    <img
+      src="https://static.wikia.nocookie.net/gameshows/images/2/22/Family_Feud_Strike_Indicator.png/revision/latest?cb=20160216060413"
+      class="lg:h-1/2 border-8 border-transparent hidden" id="x-2">
+    <img
+      src="https://static.wikia.nocookie.net/gameshows/images/2/22/Family_Feud_Strike_Indicator.png/revision/latest?cb=20160216060413"
+      class="lg:h-1/2 border-8 border-transparent hidden" id="x-3">
+  </div>
+
+  <!--this bit here is the score-->
+  <!-- <div class="flex shrink-0 flex-col items-center p-10">
+    <div class="fixed z-10 top-0">
+      <div
+        class="w-48 h-16 rounded-b-full bg-sky-900 p-4 font-bold text-white flex items-center justify-center outline-8 outline-offset-2 outline-yellow-500 outline-double dark:border-transparent">
+        <font size="48" id="score">0</font>
+      </div>
+    </div>
+  </div> -->
+
+
+  <!-- <div class="inset-0 items-center flex justify-center z-50 h-full fixed " id="qPanelContainer">
+
+
+    <div class="h-5/6 w-3/4 bg-gray-950 bottom-5 slidOutUp border-violet-600 border-4 rounded-t-xl flex justify-center"
+      id="qPanel">
+      <button class="trapezoidBlack bottom-13 left-50 relative items-center" onclick="panelChange()">
+        <div class="relative scale-94 top-1 right-6 trapezoid hover:border-red-500 duration-300 transition">
+          <div class="arrowUp left-8 top-5 scale-210 relative" id="qPanelArrow">
+
+          </div>
+        </div>
+      </button>
+
+      <div
+        class="flex content-center overflow-y-scroll grid h-full w-full right-14 relative gap-4 py-4 grid-cols-3 text-white font-bold text-sm"
+        id="qGrid">
+        
+        <button onclick="initializeQGrid()" id="qInitHide"
+          class="hover:scale-105 duration-300 transition hover:bg-red-800 bg-red-600 rounded-xl place-content-center h-24 text-xl">
+          press me to initialize the questions!
+        </button>
+
+
+      </div>
+    </div>
+  </div> -->
+
+  <!--this bit here is the question table-->
+  <div class="h-full w-full p-4 text-white hidden font-bold text-shadow-lg/20 " id="theActualBoard">
+    <div
+      class="flex grid grid-cols-1 h-full w-full rounded-xl  content-evenly bg-gray-950/5 border-gray-700 border-4 content-stretch p-8">
+      <div class="border-separate rounded-sm border-4 border-amber-500 bg-gray-950/50 h-full w-full p-8">
+        <div class="grid grid-cols-2 h-full w-full grid-rows-5 grid-flow-col gap-2">
+          <div class="text-8xl col-span-2 place-content-center flex w-full">
+            <div id="score"
+              class="bg-linear-to-t from-blue-900 place-content-center via-blue-700 to-blue-900 h-full w-1/3 relative text-shadow-lg/50 border-4 border-amber-600 p-4 text-center font-bold rounded-full">
+              100
+            </div>
+          </div>
+
+
+          <div class="h-full w-full relative" id="f1">
+            <div class="w-full h-full text-center rounded-lg flex p-1 bg-black grid grid-cols-6 gap-1">
+              <div
+                class="p-1 relative h-full col-span-5 p-4 rounded-l-sm bg-linear-to-t from-blue-800 via-blue-500 to-blue-800">
+                <div class="h-full w-full relative text-5xl right-0 place-content-center" id="q1">
+                  TEXT TEXT
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-full place-content-center p-4 border-4 border-gray-400 text-shadow-lg/50 rounded-r-sm bg-linear-to-t from-sky-700 to-sky-400 left-0">
+                <div class="text-5xl"><b id="a1" class="unused">00</b></diiv>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex p-2 h-full w-full absolute right-0 top-0 bg-linear-to-t from-blue-600 to-cyan-500 rounded-lg place-content-center border-2 border-gray-400"
+              id="c1">
+              <div
+                class="rounded-full border-gray-500 border-8 h-full w-1/4 bg-linear-to-t from-blue-800 to-blue-400 shadow-xl/30 place-content-center align-center text-shadow-xl text-7xl">
+                1
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full w-full relative" id="f2">
+            <div class="w-full h-full text-center rounded-lg flex p-1 bg-black grid grid-cols-6 gap-1">
+              <div
+                class="p-1 relative h-full col-span-5 p-4 rounded-l-sm bg-linear-to-t from-blue-800 via-blue-500 to-blue-800">
+                <div class="h-full w-full relative text-5xl right-0 place-content-center" id="q2">
+                  text text
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-full place-content-center p-4 border-4 border-gray-400 text-shadow-lg/50 rounded-r-sm bg-linear-to-t from-sky-700 to-sky-400 left-0">
+                <div class="text-5xl"><b id="a2" class="unused">00</b></diiv>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex p-2 h-full w-full absolute right-0 top-0 bg-linear-to-t from-blue-600 to-cyan-500 rounded-lg place-content-center border-2 border-gray-400"
+              id="c2">
+              <div
+                class="rounded-full border-gray-500 border-8 h-full w-1/4 bg-linear-to-t from-blue-800 to-blue-400 shadow-xl/30 place-content-center align-center text-shadow-xl text-7xl">
+                2
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full w-full relative" id="f3">
+            <div class="w-full h-full text-center rounded-lg flex p-1 bg-black grid grid-cols-6 gap-1">
+              <div
+                class="p-1 relative h-full col-span-5 p-4 rounded-l-sm bg-linear-to-t from-blue-800 via-blue-500 to-blue-800">
+                <div class="h-full w-full relative text-5xl right-0 place-content-center" id="q3">
+                  text text
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-full place-content-center p-4 border-4 border-gray-400 text-shadow-lg/50 rounded-r-sm bg-linear-to-t from-sky-700 to-sky-400 left-0">
+                <div class="text-5xl"><b id="a3" class="unused">00</b></diiv>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex p-2 h-full w-full absolute right-0 top-0 bg-linear-to-t from-blue-600 to-cyan-500 rounded-lg place-content-center border-2 border-gray-400"
+              id="c3">
+              <div
+                class="rounded-full border-gray-500 border-8 h-full w-1/4 bg-linear-to-t from-blue-800 to-blue-400 shadow-xl/30 place-content-center align-center text-shadow-xl text-7xl">
+                3
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full w-full relative" id="f4">
+            <div class="w-full h-full text-center rounded-lg flex p-1 bg-black grid grid-cols-6 gap-1">
+              <div
+                class="p-1 relative h-full col-span-5 p-4 rounded-l-sm bg-linear-to-t from-blue-800 via-blue-500 to-blue-800">
+                <div class="h-full w-full relative text-5xl right-0 place-content-center" id="q4">
+                  text text
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-full place-content-center p-4 border-4 border-gray-400 text-shadow-lg/50 rounded-r-sm bg-linear-to-t from-sky-700 to-sky-400 left-0">
+                <div class="text-5xl"><b id="a4" class="unused">00</b></diiv>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex p-2 h-full w-full absolute right-0 top-0 bg-linear-to-t from-blue-600 to-cyan-500 rounded-lg place-content-center border-2 border-gray-400"
+              id="c4">
+              <div
+                class="rounded-full border-gray-500 border-8 h-full w-1/4 bg-linear-to-t from-blue-800 to-blue-400 shadow-xl/30 place-content-center align-center text-shadow-xl text-7xl">
+                4
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full w-full relative" id="f5">
+            <div class="w-full h-full text-center rounded-lg flex p-1 bg-black grid grid-cols-6 gap-1">
+              <div
+                class="p-1 relative h-full col-span-5 p-4 rounded-l-sm bg-linear-to-t from-blue-800 via-blue-500 to-blue-800">
+                <div class="h-full w-full relative text-5xl right-0 place-content-center" id="q5">
+                  text text
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-full place-content-center p-4 border-4 border-gray-400 text-shadow-lg/50 rounded-r-sm bg-linear-to-t from-sky-700 to-sky-400 left-0">
+                <div class="text-5xl"><b id="a5" class="unused">00</b></diiv>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex p-2 h-full w-full absolute right-0 top-0 bg-linear-to-t from-blue-600 to-cyan-500 rounded-lg place-content-center border-2 border-gray-400"
+              id="c5">
+              <div
+                class="rounded-full border-gray-500 border-8 h-full w-1/4 bg-linear-to-t from-blue-800 to-blue-400 shadow-xl/30 place-content-center align-center text-shadow-xl text-7xl">
+                5
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full w-full relative" id="f6">
+            <div class="w-full h-full text-center rounded-lg flex p-1 bg-black grid grid-cols-6 gap-1">
+              <div
+                class="p-1 relative h-full col-span-5 p-4 rounded-l-sm bg-linear-to-t from-blue-800 via-blue-500 to-blue-800">
+                <div class="h-full w-full relative text-5xl right-0 place-content-center" id="q6">
+                  text text
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-full place-content-center p-4 border-4 border-gray-400 text-shadow-lg/50 rounded-r-sm bg-linear-to-t from-sky-700 to-sky-400 left-0">
+                <div class="text-5xl"><b id="a6" class="unused">00</b></diiv>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex p-2 h-full w-full absolute right-0 top-0 bg-linear-to-t from-blue-600 to-cyan-500 rounded-lg place-content-center border-2 border-gray-400"
+              id="c6">
+              <div
+                class="rounded-full border-gray-500 border-8 h-full w-1/4 bg-linear-to-t from-blue-800 to-blue-400 shadow-xl/30 place-content-center align-center text-shadow-xl text-7xl">
+                6
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full w-full relative" id="f7">
+            <div class="w-full h-full text-center rounded-lg flex p-1 bg-black grid grid-cols-6 gap-1">
+              <div
+                class="p-1 relative h-full col-span-5 p-4 rounded-l-sm bg-linear-to-t from-blue-800 via-blue-500 to-blue-800">
+                <div class="h-full w-full relative text-5xl right-0 place-content-center" id="q7">
+                  text text
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-full place-content-center p-4 border-4 border-gray-400 text-shadow-lg/50 rounded-r-sm bg-linear-to-t from-sky-700 to-sky-400 left-0">
+                <div class="text-5xl"><b id="a7" class="unused">00</b></diiv>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex p-2 h-full w-full absolute right-0 top-0 bg-linear-to-t from-blue-600 to-cyan-500 rounded-lg place-content-center border-2 border-gray-400"
+              id="c7">
+              <div
+                class="rounded-full border-gray-500 border-8 h-full w-1/4 bg-linear-to-t from-blue-800 to-blue-400 shadow-xl/30 place-content-center align-center text-shadow-xl text-7xl">
+                7
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full w-full relative" id="f8">
+            <div class="w-full h-full text-center rounded-lg flex p-1 bg-black grid grid-cols-6 gap-1">
+              <div
+                class="p-1 relative h-full col-span-5 p-4 rounded-l-sm bg-linear-to-t from-blue-800 via-blue-500 to-blue-800">
+                <div class="h-full w-full relative text-5xl right-0 place-content-center" id="q8">
+                  text text
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-full place-content-center p-4 border-4 border-gray-400 text-shadow-lg/50 rounded-r-sm bg-linear-to-t from-sky-700 to-sky-400 left-0">
+                <div class="text-5xl"><b id="a8" class="unused">00</b></diiv>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex p-2 h-full w-full absolute right-0 top-0 bg-linear-to-t from-blue-600 to-cyan-500 rounded-lg place-content-center border-2 border-gray-400"
+              id="c8">
+              <div
+                class="rounded-full border-gray-500 border-8 h-full w-1/4 bg-linear-to-t from-blue-800 to-blue-400 shadow-xl/30 place-content-center align-center text-shadow-xl text-7xl">
+                8
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <br>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/peerjs@1.3.2/dist/peerjs.min.js">
+      import { Peer } from "peerjs";
+    </script>
+    <script src="utilities/utility.js">
+    </script>
+    <script src="utilities/FFPeerCon.js">
+      export default pConn;
+    </script>
+    <script src="utilities/codebox.js">
+    </script>
+    <script src="utilities/qBoardChange.js">
+
+    </script>
+    <script src="FFB/FFBControl.js">
+    </script>
+    <!-- a for analog -->
+    <script src="FFB/FFBA.js">
+    </script>
+    <script src="FFB/FFBMParser.js">
+
+    </script>
+</body>
+
+</html>

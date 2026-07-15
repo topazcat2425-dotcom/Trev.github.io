@@ -1,0 +1,125 @@
+.turnIn {
+    animation: flip-appear .5s ease forwards;
+}
+
+@keyframes flip-appear {
+    0% {
+        transform: scaleY(0);
+        /* transform: translateY(0); */
+    }
+
+    100% {
+        transform: scaleY(1);
+        /* transform: translateY(-50%); */
+    }
+}
+
+.slide-in-panel {
+    animation: slide-in 1s ease forwards;
+}
+
+.slide-out-panel {
+    /* animation-direction: reverse; */
+    animation: slide-in 1s ease reverse forwards;
+}
+
+.slid-out {
+    translate: 100% 0;
+}
+
+.slidOutUp {
+    translate: 0% 100%;
+}
+
+@keyframes slide-in {
+    from {
+        translate: 100% 0;
+    }
+
+    to {
+        translate: 0 0;
+    }
+}
+
+.turnOut {
+    animation: flip-appear .35s ease reverse forwards;
+    transform: translateY(-50%);
+}
+
+.trapezoid {
+    border-bottom: 50px solid black;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 125px;
+}
+
+.trapezoid:hover {
+    border-bottom: 50px solid #7F22FE;
+}
+
+.trapezoidBlack {
+    border-bottom: 50px solid #7F22FE;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 125px;
+}
+
+.slightlyRight {
+    transform: translateX(-27px)
+}
+
+.rotateLeft {
+    transform: rotate(-90deg);
+}
+
+.rotateRight {
+    transform: rotate(90deg);
+}
+
+.rotateDown {
+    transform: rotate(180deg);
+}
+
+.rotateAllTheWayAround {
+    transform: rotate(0deg);
+}
+
+.flip {
+    transform: scale(-1);
+}
+
+.arrowLeft {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    border-right: 10px solid white;
+}
+
+.arrowUp {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+
+    border-bottom: 10px solid white;
+}
+
+
+#background {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    /* Ensure div tag stays behind content; -999 might work, too. */
+}
+
+.stretch {
+    width: 100%;
+    height: 100%;
+}
