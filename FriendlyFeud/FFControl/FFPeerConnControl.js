@@ -19,11 +19,12 @@ class connControl {
 
 
         this.peer = new Peer(this.hereID, {
-            "debug": "3", config: {
-                iceServers: [
-                    { urls: "stun:stun.l.google.com:19302" }
-                ]
-            }
+            "debug": "3"
+            // , config: {
+            //     iceServers: [
+            //         { urls: "stun:stun.l.google.com:19302" }
+            //     ]
+            // }
         });
 
         this.peer.on("open", function (id) {

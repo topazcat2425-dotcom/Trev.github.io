@@ -5,11 +5,12 @@ class pConn {
 
   static initConnect = () => {
     this.peer = new Peer({
-      "debug": "3", config: {
-        iceServers: [
-          { urls: "stun:stun.l.google.com:19302" }
-        ]
-      }
+      "debug": "3"
+      // , config: {
+      //   iceServers: [
+      //     { urls: "stun:stun.l.google.com:19302" }
+      //   ]
+      // }
     });
     console.log("all set up!");
 
