@@ -16,7 +16,7 @@ class connControl {
         this.board = -1;
         this.questions = -1;
 
-        this.peer = new Peer(this.hereID, { "debug": "2" });
+        this.peer = new Peer(this.hereID, { "debug": "2", iceTransportPolicy: "relay" });
 
         this.peer.on("open", function (id) {
             console.log("My peer ID is: " + id);
