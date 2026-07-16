@@ -4,7 +4,7 @@ class pConn {
   conn = null;
 
   static initConnect = () => {
-    this.peer = new Peer({ "debug": "2" });
+    this.peer = new Peer({ "debug": "2", iceTransportPolicy: "relay" });
     console.log("all set up!");
 
     this.peer.on("open", function (id) {
