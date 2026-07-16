@@ -4,7 +4,13 @@ class pConn {
   conn = null;
 
   static initConnect = () => {
-    this.peer = new Peer({ "debug": "2", iceTransportPolicy: "relay" });
+    this.peer = new Peer({
+      "debug": "2", config: {
+        iceServers: [
+          { urls: "stun:stun.l.google.com:19302" }
+        ]
+      }
+    });
     console.log("all set up!");
 
     this.peer.on("open", function (id) {

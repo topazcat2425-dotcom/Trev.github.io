@@ -16,7 +16,15 @@ class connControl {
         this.board = -1;
         this.questions = -1;
 
-        this.peer = new Peer(this.hereID, { "debug": "2", iceTransportPolicy: "relay" });
+
+
+        this.peer = new Peer(this.hereID, {
+            "debug": "2", "debug": "2", config: {
+                iceServers: [
+                    { urls: "stun:stun.l.google.com:19302" }
+                ]
+            }
+        });
 
         this.peer.on("open", function (id) {
             console.log("My peer ID is: " + id);
