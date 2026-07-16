@@ -18,13 +18,33 @@ class connControl {
 
 
 
+        // this.peer = new Peer(this.hereID, {
+        //     "debug": "3"
+        //     // , config: {
+        //     //     iceServers: [
+        //     //         { urls: "stun:stun.l.google.com:19302" }
+        //     //     ]
+        //     // }
+        // });
+
         this.peer = new Peer(this.hereID, {
-            "debug": "3"
-            // , config: {
-            //     iceServers: [
-            //         { urls: "stun:stun.l.google.com:19302" }
-            //     ]
-            // }
+            debug: 3,
+            config: {
+                iceServers: [
+                    { urls: 'stun:stun.l.google.com:19302' },
+                    { urls: 'stun:stun1.l.google.com:19302' },
+                    {
+                        urls: 'turn:your-turn-server.com:3478',
+                        username: 'your-username',
+                        credential: 'your-credential'
+                    },
+                    {
+                        urls: 'turn:your-turn-server.com:3478?transport=tcp',
+                        username: 'your-username',
+                        credential: 'your-credential'
+                    }
+                ]
+            }
         });
 
         this.peer.on("open", function (id) {
