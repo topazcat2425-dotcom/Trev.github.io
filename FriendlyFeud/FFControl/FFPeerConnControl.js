@@ -19,7 +19,7 @@ class connControl {
 
 
         this.peer = new Peer(this.hereID, {
-            "debug": "2", "debug": "2", config: {
+            "debug": "3", config: {
                 iceServers: [
                     { urls: "stun:stun.l.google.com:19302" }
                 ]

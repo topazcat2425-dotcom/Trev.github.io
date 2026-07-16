@@ -5,7 +5,7 @@ class pConn {
 
   static initConnect = () => {
     this.peer = new Peer({
-      "debug": "2", config: {
+      "debug": "3", config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" }
         ]
