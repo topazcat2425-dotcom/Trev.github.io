@@ -1,3 +1,4 @@
+let answering = false;
 
 function parseMessage(message, num) {
 
@@ -14,17 +15,21 @@ function parseMessage(message, num) {
             connControl.sendMessage(num, "you are fake news");
             break;
         case "letMeAnswer":
-            connControl.sendMessageAll("freeze");
-            connControl.sendMessage(num, "answer now");
+            if (!answering) {
+                connControl.sendMessageAll("freeze");
+                connControl.sendMessage(num, "answer now");
 
-            enableTeams(false);
-            specialEnable(num);
-            setxMode(1);
-            // TODO timecode shit
-            setTimeout(() => {
-                // TODO function after 3000 seconds
-                connControl.sendMessageAll("at ease");
-            }, 5000);
+                enableTeams(false);
+                specialEnable(num);
+                setxMode(1);
+                // TODO timecode shit
+                setTimeout(() => {
+                    // TODO function after 3000 seconds
+                    connControl.sendMessageAll("at ease");
+                    answering = false;
+                }, 5000);
+            }
+
 
             break;
         default:
